@@ -1,7 +1,6 @@
 # React Drag'n'Drop Starter
 
-Learn to create a Trello Dashboard clone with React!
-This is the starter repository for the React Drag'n'Drop Youtube video.
+# Still in progress
 
 ## Installation
 
