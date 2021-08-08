@@ -29,6 +29,9 @@ const Item = ({ item, index, moveItem, status }) => {
             if(dragIndex === hoverIndex) {
                 return;
             }
+
+            const hoveredRect = ref.current.getBoundClientRect();
+            const hoverMiddleY = (hoveredRect.bottom - hoveredRect.top) / 2;
         } 
 
     })
