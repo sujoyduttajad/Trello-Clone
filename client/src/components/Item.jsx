@@ -34,6 +34,14 @@ const Item = ({ item, index, moveItem, status }) => {
             const hoverMiddleY = (hoveredRect.bottom - hoveredRect.top) / 2;
             // To get our mouse position whenever we are dragging on the screen
             const mousePosition = monitor.getClientOffset();
+            const hoverClientY = mousePosition.y - hoveredRect.top;
+
+            // the drag index is whatever item index we're working with when we click and drag aan item
+            // so if the dragIndex is less than the hoverIndex then we don't have to do anything but if it's 
+            // halfway over the card that it's hovering over then it's gonna pop down
+            if(dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+                return;
+            }
         } 
 
     })
