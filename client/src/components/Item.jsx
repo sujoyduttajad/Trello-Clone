@@ -42,6 +42,15 @@ const Item = ({ item, index, moveItem, status }) => {
             if(dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
                 return;
             }
+
+            if(dragIndex > hoverIndex && hoverClientY < hoverMiddleY) {
+                return;
+            }
+
+            // this is a callback that wea re gonna supply. This function will allow us to
+            // actually change where the card is in the same column  
+            moveItem(dragIndex, hoverIndex);
+            item.index = hoverIndex;
         } 
 
     })
