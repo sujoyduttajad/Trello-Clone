@@ -70,7 +70,7 @@ const Item = ({ item, index, moveItem, status }) => {
     // so this state is going to be used for opening the window when an item is being clicked   
     const onOpen = () => setShow(true);
 
-    const onCLose = () => setShow(false);
+    const onClose = () => setShow(false);
 
     // we are gonna wrap drag and drop with the ref that we get
     // to locate and identify the actual HTML item that we're working with 
@@ -93,6 +93,11 @@ const Item = ({ item, index, moveItem, status }) => {
                 <p className={'item-title'}>{item.content}</p>
                 <p className={'item-status'}>{item.icon}</p>
             </div>
+            <Window
+                item={item}
+                onClose={onClose}
+                show={show}
+            />
         </Fragment>
     )
 }
