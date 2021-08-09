@@ -66,8 +66,16 @@ const Item = ({ item, index, moveItem, status }) => {
         })
     });
 
-    const [show, setShow] = useState();
-        
+    const [show, setShow] = useState(false);
+    // so this state is going to be used for opening the window when an item is being clicked   
+    const onOpen = () => setShow(true);
+
+    const onCLose = () => setShow(false);
+
+    // we are gonna wrap drag and drop with the ref that we get
+    // to locate and identify the actual HTML item that we're working with 
+    drag(drop(ref));
+
 
 
     return (
