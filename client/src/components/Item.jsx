@@ -79,9 +79,21 @@ const Item = ({ item, index, moveItem, status }) => {
 
 
     return (
-        <div>
-            
-        </div>
+        <Fragment>
+            <div
+                ref={ref}
+                style={{ opacity: isDragging ? 0 : 1 }}
+                className={'item'}
+                onClick={onOpen}
+            >
+                <div 
+                    className={'color-bar'}
+                    style={{ backgroundColor: status.color }} 
+                />
+                <p className={'item-title'}>{item.content}</p>
+                <p className={'item-status'}>{item.icon}</p>
+            </div>
+        </Fragment>
     )
 }
 
