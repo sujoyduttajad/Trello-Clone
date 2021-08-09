@@ -53,7 +53,20 @@ const Item = ({ item, index, moveItem, status }) => {
             item.index = hoverIndex;
         } 
 
-    })
+    });
+
+    // useDrag hook takes an item that is going to be an object we create right here
+    const [{ isDragging }, drag] = useDrag({
+        item: { type: ITEM_TYPE, ...item, index },
+        // the collect callback basically gives yo ua bunch of props and data that react-dnd supplies
+        // and one of the things is the monitor which is basically a copy of the screen
+        // which includes any mouse actions and it will also tell us that we are dragging the item or not
+        collect: monitor => ({
+            isDragging: monitor.isDragging()
+        })
+    });
+
+    const [show, setShow] = useState();
         
 
 
