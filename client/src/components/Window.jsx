@@ -18,7 +18,12 @@ const Window = ({ show, onClose, item }) => {
                     onClick={onClose}
                 >X</button>
             </div>
-            <div></div>
+            <div>
+                <h2>Description</h2>
+                <p>{item.content}</p>
+                <h2>Status</h2>
+                <p>{item.icon}</p>
+            </div>
         </Modal>
     )
 }
