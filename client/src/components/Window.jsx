@@ -22,7 +22,11 @@ const Window = ({ show, onClose, item }) => {
                 <h2>Description</h2>
                 <p>{item.content}</p>
                 <h2>Status</h2>
-                <p>{item.icon}</p>
+                <p>
+                    {item.icon}
+                    {`${item.status.charAt(0).toUpperCase()}
+                        ${item.status.slice(1)}`}
+                </p>
             </div>
         </Modal>
     )
