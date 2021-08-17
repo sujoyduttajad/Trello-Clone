@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Item from "../components/Item";
 import DropWrapper from '../components/DropWrapper';
 import Col from "../components/Col";
@@ -26,14 +26,48 @@ const Homepage = () => {
             return [...newItems];    
         })
 
-        //
+        // So on move it gives us the drag index(items) and the hover index(the item that it's on hovering)
+        const moveItem = (dragIndex, hoverIndex) => {
+            const item = items[dragIndex];
+            // same logic as used above, basically filtered out and then insert it
+            setItems(prevState => {
+                const newItem = prevState.filter((i, idx) => idx !== dragIndex);
+                newItems.splice(hoverIndex, 0, item);
+                return [...newItems];
+            });
+        }
     }
 
     return (
-        <div>
-            Time to start coding!
+        <div className={'row'}>
+            {statuses.map(s => {
+                return (
+                    // This is gonna create the actual columns with the status names
+                    <div key={status} className={'col-wrapper'}>
+                        <h2 className={'col-header'}>{s.status.toUpperCase()}</h2>
+                        <DropWrapper onDrop={onDrop} status={s.status}>
+                            <Col>
+                                {
+                                    //By using filter we are only going to show the items in this column that equals the status
+                                    // of this column. After that we will map the items and put the minto a Item component 
+                                    items.filter(i => i.status === s.status)
+                                         .map((i, idx) => (
+                                            <Item 
+                                                key={i.id}
+                                                item={i}
+                                                index={idx}
+                                                moveItem={moveItem}
+                                                status={s}
+                                            />
+                                    ) )
+                                }
+                            </Col>
+                        </DropWrapper>
+                    </div>
+                )
+            })}
         </div>
     );
 };
 
-export default Homepage;
+export default Homepage
