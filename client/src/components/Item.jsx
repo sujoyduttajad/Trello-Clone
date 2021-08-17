@@ -30,7 +30,7 @@ const Item = ({ item, index, moveItem, status }) => {
                 return;
             }
 
-            const hoveredRect = ref.current.getBoundClientRect();
+            const hoveredRect = ref.current.getBoundingClientRect();
             const hoverMiddleY = (hoveredRect.bottom - hoveredRect.top) / 2;
             // To get our mouse position whenever we are dragging on the screen
             const mousePosition = monitor.getClientOffset();
