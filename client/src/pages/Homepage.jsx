@@ -43,7 +43,7 @@ const Homepage = () => {
             {statuses.map(s => {
                 return (
                     // This is gonna create the actual columns with the status names
-                    <div key={status} className={'col-wrapper'}>
+                    <div key={s.status} className={'col-wrapper'}>
                         <h2 className={'col-header'}>{s.status.toUpperCase()}</h2>
                         <DropWrapper onDrop={onDrop} status={s.status}>
                             <Col>
