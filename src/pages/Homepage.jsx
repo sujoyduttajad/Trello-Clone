@@ -25,18 +25,18 @@ const Homepage = () => {
                 // Summary-> so filtering out the item that we are currently dropping and then we set the new status and set the new icon
             return [...newItems];    
         })
-
-        // So on move it gives us the drag index(items) and the hover index(the item that it's on hovering)
-        const moveItem = (dragIndex, hoverIndex) => {
-            const item = items[dragIndex];
-            // same logic as used above, basically filtered out and then insert it
-            setItems(prevState => {
-                const newItem = prevState.filter((i, idx) => idx !== dragIndex);
-                newItems.splice(hoverIndex, 0, item);
-                return [...newItems];
-            });
-        }
     }
+
+    // So on move it gives us the drag index(items) and the hover index(the item that it's on hovering)
+    const moveItem = (dragIndex, hoverIndex) => {
+        const item = items[dragIndex];
+        // same logic as used above, basically filtered out and then insert it
+        setItems(prevState => {
+            const newItems = prevState.filter((i, idx) => idx !== dragIndex);
+            newItems.splice(hoverIndex, 0, item);
+            return [...newItems];
+        });
+    };
 
     return (
         <div className={'row'}>
@@ -51,15 +51,7 @@ const Homepage = () => {
                                     //By using filter we are only going to show the items in this column that equals the status
                                     // of this column. After that we will map the items and put the minto a Item component 
                                     items.filter(i => i.status === s.status)
-                                         .map((i, idx) => (
-                                            <Item 
-                                                key={i.id}
-                                                item={i}
-                                                index={idx}
-                                                moveItem={moveItem}
-                                                status={s}
-                                            />
-                                    ) )
+                                         .map((i, idx) => <Item  key={i.id} item={i} index={idx} moveItem={moveItem} status={s} /> )
                                 }
                             </Col>
                         </DropWrapper>
